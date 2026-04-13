@@ -64,3 +64,21 @@ export async function getHistory(userId: string): Promise<AnalysisResponse[]> {
   if (!res.ok) throw new Error('Error obteniendo historial')
   return res.json()
 }
+export async function analyzeDocument(
+  file: File,
+  userId?: string
+): Promise<JobStatusResponse> {
+  const form = new FormData()
+  form.append('file', file)
+  if (userId) form.append('user_id', userId)
+
+  const res = await fetch(`${API_URL}/api/v1/analysis/document`, {
+    method: 'POST',
+    body: form,
+  })
+  if (!res.ok) {
+    const err = await res.json()
+    throw new Error(err.detail || 'Error analizando documento')
+  }
+  return res.json()
+}

@@ -5,7 +5,7 @@ export type VeracityLevel =
   | 'likely_false'
   | 'false'
 
-export type ContentType = 'text' | 'url' | 'image'
+export type ContentType = 'text' | 'url' | 'image' | 'document'
 
 export interface AnalysisResponse {
   content_type: ContentType

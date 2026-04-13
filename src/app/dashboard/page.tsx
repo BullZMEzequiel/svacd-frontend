@@ -60,23 +60,24 @@ export default function DashboardPage() {
         <h1 className="text-2xl font-bold text-gray-900 mb-8">Dashboard</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {[
-            { type: 'text', label: 'Texto', color: 'blue', icon: '📝' },
-            { type: 'url',  label: 'URL',   color: 'purple', icon: '🔗' },
-            { type: 'image',label: 'Imagen',color: 'green', icon: '🖼️' },
-          ].map(item => (
-            <Link
-              key={item.type}
-              href={`/analyze?type=${item.type}`}
-              className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow flex items-center gap-4"
-            >
-              <span className="text-3xl">{item.icon}</span>
-              <div>
-                <p className="font-semibold text-gray-900">Analizar {item.label}</p>
-                <p className="text-xs text-gray-400">Verificar ahora</p>
-              </div>
-            </Link>
-          ))}
+           {[
+              { type: 'text',     label: 'Texto',      icon: '📝', desc: 'Pega un fragmento de texto o noticia' },
+              { type: 'url',      label: 'URL',        icon: '🔗', desc: 'Ingresa un enlace para analizar' },
+              { type: 'image',    label: 'Imagen',     icon: '🖼️', desc: 'Sube JPG, PNG o WEBP' },
+              { type: 'document', label: 'Documento',  icon: '📄', desc: 'Sube un PDF o TXT' },
+            ].map(item => (
+        <Link
+    key={item.type}
+    href={`/analyze?type=${item.type}`}
+    className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition-shadow flex items-center gap-4"
+        >
+    <span className="text-3xl">{item.icon}</span>
+         <div>
+      <p className="font-semibold text-gray-900">Analizar {item.label}</p>
+      <p className="text-xs text-gray-400">{item.desc}</p>
+          </div>
+        </Link>
+      ))}
         </div>
 
         <div className="bg-white rounded-xl border border-gray-200 p-6">
